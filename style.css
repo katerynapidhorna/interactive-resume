@@ -10,6 +10,8 @@ header {
 .jumbotron .container {
   position: absolute;
   top: 30%;
+  right: 0;
+  left: 0;
   text-align: center;
   z-index: 10;
 }
@@ -25,7 +27,8 @@ header {
 }
 
 .jumbotron .scroll-down {
-  display: block;
+  display: flex;
+  justify-content: center;
   position: absolute;
   right: 5%;
   bottom: 0;
@@ -41,7 +44,6 @@ header {
   font-weight: 800;
   position: absolute;
   padding: 1em;
-  margin-left: 7px;
   animation-name: up-an-down;
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
@@ -90,9 +92,112 @@ header {
 
 .container h1 {
   display: inline-block;
-  padding: 0 0 20px 0;
+  padding: 0 20px 20px 20px;
   border-bottom: 1px solid #fff;
 }
 
+.sub-title {
+  font-size: 28px;
+  font-weight: 200;
+}
+
+nav {
+  position: relative;
+}
+
+nav ul {
+  position: absolute;
+  right: 5%;
+  top: -32px;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+
+nav ul li {
+  height: 100px;
+  width: 100px;
+  background-color: #222222;
+}
+
+.profile-container {
+  background-color: #fff;
+  width: 80%;
+  text-align: center;
+  margin: auto;
+}
+
+.profile-container h2 {
+  display: inline-block;
+  padding: 0 120px 20px 120px;
+  border-bottom: 1px solid #ded9d9;
+}
+
+.details-container {
+  margin-top: 5em;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.details-container section {
+  width: 30%;
+  margin: 1em;
+  text-align: left;
+}
+
+.about h3 {
+  padding-bottom: 1em;
+}
+
+.about p {
+  line-height: 1.7em;
+}
+
+.social {
+  display: flex;
+}
+
+.social a {
+  margin-right: 10px;
+  border-radius: 7px;
+}
+
+.social-inst {
+  height: 30px;
+  background-image: url(./img/instagram-icon.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-size: 60px;
+  background-position-x: -30px;
+  width: 30px;
+}
+
+.social-linkedin {
+  height: 30px;
+  background-image: url(./img/linkedin-icon.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-size: 60px;
+  background-position-x: -30px;
+  width: 30px;
+}
+
+.clear {
+  float: none;
+  clear: both;
+}
+
 @media only screen and (max-width: 600px) {
+  .jumbotron .scroll-down {
+    right: 0;
+    width: 100%;
+  }
+
+  .details-container {
+    flex-direction: column;
+  }
 }
