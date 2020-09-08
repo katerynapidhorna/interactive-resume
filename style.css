@@ -1,6 +1,15 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
 header {
   position: relative;
-  height: 698px;
+  min-height: 100vh;
   background-image: url(./img/clover-bg.jpg);
   background-attachment: fixed;
   background-size: cover;
@@ -94,6 +103,7 @@ header {
   display: inline-block;
   padding: 0 20px 20px 20px;
   border-bottom: 1px solid #fff;
+  font-size: 4em;
 }
 
 .sub-title {
@@ -140,6 +150,7 @@ nav ul li a:hover {
 }
 
 .profile-container {
+  min-height: 100vh;
   background-color: #fff;
   width: 80%;
   text-align: center;
@@ -152,6 +163,11 @@ nav ul li a:hover {
   border-bottom: 1px solid #ded9d9;
 }
 
+.profile-container img {
+  height: 230px;
+  border-radius: 50%;
+}
+
 .details-container {
   margin-top: 5em;
   display: flex;
@@ -160,7 +176,7 @@ nav ul li a:hover {
 }
 
 .details-container section {
-  width: 30%;
+  width: 40%;
   margin: 1em;
   text-align: left;
 }
@@ -215,5 +231,11 @@ nav ul li a:hover {
 
   .details-container {
     flex-direction: column;
+    justify-content: space-evenly;
+  }
+
+  .details-container section {
+    width: 100%;
+    margin: auto;
   }
 }
