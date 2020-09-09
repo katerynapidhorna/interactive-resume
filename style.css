@@ -18,6 +18,20 @@ header {
   margin-bottom: 0 !important;
 }
 
+h1 {
+  display: inline-block;
+  padding: 0 20px 20px 20px;
+  border-bottom: 1px solid #fff;
+  font-size: 4em;
+}
+
+h2 {
+  display: inline-block;
+  font-size: 2.5em;
+  padding: 70px 120px 0.5em 120px;
+  border-bottom: 1px solid #ded9d9;
+}
+
 .jumbotron .container {
   position: absolute;
   top: 30%;
@@ -101,13 +115,6 @@ header {
   text-shadow: 0 0 5px black;
 }
 
-.container h1 {
-  display: inline-block;
-  padding: 0 20px 20px 20px;
-  border-bottom: 1px solid #fff;
-  font-size: 4em;
-}
-
 .sub-title {
   font-size: 28px;
   font-weight: 200;
@@ -160,13 +167,6 @@ nav {
   margin: auto;
 }
 
-.profile-container h2 {
-  display: inline-block;
-  font-size: 2.5em;
-  padding: 70px 120px 0.5em 120px;
-  border-bottom: 1px solid #ded9d9;
-}
-
 .profile-container h3 {
   padding-bottom: 1em;
 }
@@ -181,6 +181,7 @@ nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
+  padding-bottom: 4em;
 }
 
 .details-container section {
@@ -226,9 +227,37 @@ nav {
   width: 30px;
 }
 
-.clear {
-  float: none;
-  clear: both;
+.experience-container {
+  min-height: 100vh;
+  background-color: rgb(89 197 182 / 81%);
+  text-align: center;
+  margin: auto;
+}
+
+.experience-container h2 {
+  color: #fff;
+  text-shadow: 0 0 3px #222222;
+}
+
+.stack-container {
+  min-height: 100vh;
+  background-color: #fff;
+  text-align: center;
+  margin: auto;
+}
+
+.projects-container {
+  min-height: 100vh;
+  background-color: rgb(89 197 182 / 81%);
+  text-align: center;
+  margin: auto;
+}
+
+.contact-container {
+  min-height: 100vh;
+  background-color: #666666;
+  text-align: center;
+  margin: auto;
 }
 
 @media only screen and (max-width: 600px) {
@@ -240,10 +269,15 @@ nav {
   .details-container {
     flex-direction: column;
     justify-content: space-evenly;
+    padding-bottom: 4em;
   }
 
   .details-container section {
     width: 100%;
     margin: auto;
+  }
+
+  .details strong {
+    line-height: 1.8em;
   }
 }
