@@ -14,6 +14,7 @@ header {
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 0 !important;
 }
 
 .jumbotron .container {
@@ -115,16 +116,16 @@ nav {
   position: relative;
 }
 
-nav ul {
+.nav-list {
   position: absolute;
   right: 5%;
-  top: -32px;
+  top: 0;
   list-style-type: none;
   display: flex;
   flex-direction: column;
 }
 
-nav ul li {
+.nav-list li {
   position: relative;
   height: 100px;
   width: 100px;
@@ -132,9 +133,9 @@ nav ul li {
   background-color: #222222;
 }
 
-nav ul li a,
-nav ul li a:link,
-nav ul li a:visited {
+.nav-list li a,
+.nav-list li a:link,
+.nav-list li a:visited {
   position: absolute;
   top: 0;
   bottom: 0;
@@ -145,7 +146,7 @@ nav ul li a:visited {
   padding-top: 33px;
 }
 
-nav ul li a:hover {
+.nav-list li a:hover {
   background-color: rgba(255, 255, 255, 0.38);
 }
 
@@ -159,7 +160,7 @@ nav ul li a:hover {
 
 .profile-container h2 {
   display: inline-block;
-  padding: 0 120px 20px 120px;
+  padding: 70px 120px 20px 120px;
   border-bottom: 1px solid #ded9d9;
 }
 
