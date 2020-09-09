@@ -5,6 +5,7 @@ html {
 body {
   margin: 0;
   padding: 0;
+  min-width: 430px;
 }
 
 header {
@@ -110,6 +111,7 @@ header {
 .sub-title {
   font-size: 28px;
   font-weight: 200;
+  padding-bottom: 1em;
 }
 
 nav {
@@ -160,8 +162,13 @@ nav {
 
 .profile-container h2 {
   display: inline-block;
-  padding: 70px 120px 20px 120px;
+  font-size: 2.5em;
+  padding: 70px 120px 0.5em 120px;
   border-bottom: 1px solid #ded9d9;
+}
+
+.profile-container h3 {
+  padding-bottom: 1em;
 }
 
 .profile-container img {
@@ -170,7 +177,7 @@ nav {
 }
 
 .details-container {
-  margin-top: 5em;
+  margin-top: 3em;
   display: flex;
   justify-content: space-between;
   flex-direction: row;
@@ -182,8 +189,8 @@ nav {
   text-align: left;
 }
 
-.about h3 {
-  padding-bottom: 1em;
+.details strong {
+  line-height: 1.8em;
 }
 
 .about p {
