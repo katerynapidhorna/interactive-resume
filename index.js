@@ -8,6 +8,7 @@ $(() => {
     nav.css({
       top: `40px`,
       position: "fixed",
+      "z-index": "1000",
     });
   };
   const addAbsolute = () => {
