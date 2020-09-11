@@ -415,6 +415,64 @@ nav li a:hover {
 
 .contact-container h2 {
   color: #fff;
+  border: none;
+  /* border-bottom: 1px solid #8a8888; */
+}
+
+.contact-container section {
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 4em;
+  padding-bottom: 4em;
+  border-top: 1px solid #8a8888;
+  border-bottom: 1px solid #8a8888;
+}
+
+.contact-container section p {
+  position: relative;
+  color: #8a8888;
+  text-align: left;
+}
+
+.contact-container section p:hover span {
+  background-position-x: 32px;
+}
+
+.contact-container span {
+  height: 32px;
+  width: 32px;
+  display: inline-block;
+  background-size: cover;
+  border-radius: 5px;
+}
+
+.linked-in {
+  background-image: url("./img/linkedin-icon.png");
+}
+
+.linked-github {
+  background-image: url("./img/github-icon.png");
+  background-color: #66666647;
+}
+
+.linked-inst {
+  background-image: url("./img/instagram-icon.png");
+}
+
+.contact-container a,
+.contact-container a:link,
+.contact-container a:visited,
+.contact-container a:active {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  padding-left: 43px;
+  text-decoration: none;
+  color: #8a8888;
+}
+
+.contact-container a:hover {
+  color: #fff;
 }
 
 @media only screen and (max-width: 600px) {
