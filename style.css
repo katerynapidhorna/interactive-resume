@@ -275,21 +275,25 @@ nav li a:hover {
   min-height: 100vh;
   background-color: #fff;
   text-align: center;
-  width: 80%;
   margin: auto;
+  margin-bottom: 4em;
+}
+
+.stack-container h3 {
+  border-bottom: 1px solid #ded9d9;
 }
 
 .stack-container ul {
-  padding-left: 0;
+  padding: 1em;
   list-style-type: none;
-  border-left: 1px solid #222222;
+  border-left: 1px solid #ded9d9;
   border-radius: 33px;
-  margin-bottom: 4em;
+  margin-top: 4em;
 }
 
 .stack-container ul li {
   text-align: left;
-  padding: 1em;
+  padding-left: 1em;
   width: fit-content;
   border-radius: 10px;
   margin-bottom: 10px;
@@ -304,8 +308,9 @@ nav li a:hover {
 }
 
 .projects-container h2 {
-  color: #333333;
-  border-bottom: 1px solid #333333;
+  color: #f3efe0;
+  text-shadow: 0 0 2px black;
+  border-bottom: 1px solid #f3efe0 / black;
 }
 
 .project-img {

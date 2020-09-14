@@ -1,6 +1,8 @@
 $(() => {
   const $w = $(window);
   const nav = $(".nav-list");
+  const header = $("header");
+  const body = $("body");
   let lastScrollTop = 0;
 
   const addFixed = () => {
@@ -19,62 +21,48 @@ $(() => {
     });
   };
 
-  const checkOnScroll = () => {
-    $w.on("scroll", () => {
-      if ($w.width() <= 600) {
-        addAbsolute();
-        return;
-      } else {
-        const currentScrollTop = $w.scrollTop();
-        const direction = lastScrollTop < currentScrollTop ? "down" : "up";
-        lastScrollTop = currentScrollTop;
-        if (direction === "down" && lastScrollTop >= 650) {
-          addFixed();
-        }
-        if (direction === "up") {
-          if (nav.offset().top <= $(".profile-container").offset().top) {
-            addAbsolute();
-          }
-        }
-      }
-    });
-  };
-
   //add/remove classes depending on screen width_______START
-  if ($w.width() <= 600) {
+  if (body.width() <= 585) {
+    console.log(body.width());
     $("nav ul").removeClass("nav-list");
     $("nav ul").addClass("media-nav-list");
   }
 
   $w.on("resize", () => {
-    if ($w.width() <= 600) {
+    console.log($(window).width(), body.width());
+    if (body.width() <= 585) {
       $("nav ul").removeClass("nav-list").addClass("media-nav-list");
-      return;
     } else {
       $("nav ul").removeClass("media-nav-list").addClass("nav-list");
-      checkOnScroll();
     }
   });
   //add/remove classes depending on screen width_______END
 
   //changing position of the element on scroll_______START
-  if ($w.scrollTop() >= 698 && $w.width() > 600) {
+  if ($w.scrollTop() >= header.height() && body.width() > 585) {
+    $("nav ul").removeClass("media-nav-list").addClass("nav-list");
     addFixed();
   }
 
   $w.on("scroll", () => {
-    if ($w.width() <= 600) {
-      addAbsolute();
+    if (body.width() <= 585) {
+      $("nav ul").removeClass("nav-list").addClass("media-nav-list");
       return;
     } else {
       const currentScrollTop = $w.scrollTop();
       const direction = lastScrollTop < currentScrollTop ? "down" : "up";
       lastScrollTop = currentScrollTop;
-      if (direction === "down" && lastScrollTop >= 650) {
+      if (
+        direction === "down" &&
+        lastScrollTop >= header.height() - 20 &&
+        body.width() > 585
+      ) {
         addFixed();
-      }
-      if (direction === "up") {
-        if (nav.offset().top <= $(".profile-container").offset().top) {
+      } else if (direction === "up") {
+        if (
+          nav.offset().top <= $(".profile-container").offset().top &&
+          body.width() > 585
+        ) {
           addAbsolute();
         }
       }
