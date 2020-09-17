@@ -3,12 +3,14 @@ $(() => {
   const nav = $(".nav-list");
   const header = $("header");
   const body = $("body");
+  const burgerMenu = $(".burger-menu");
+  const mediaNavMenu = $(".media-nav-list");
   let lastScrollTop = 0;
 
   const addFixed = () => {
     const nav = $(".nav-list");
     nav.css({
-      top: `40px`,
+      top: `110px`,
       position: "fixed",
       "z-index": "1000",
     });
@@ -21,15 +23,17 @@ $(() => {
     });
   };
 
+  burgerMenu.on("click", () => {
+    console.log("clicked");
+  });
+
   //add/remove classes depending on screen width_______START
   if (body.width() <= 585) {
-    console.log(body.width());
     $("nav ul").removeClass("nav-list");
     $("nav ul").addClass("media-nav-list");
   }
 
   $w.on("resize", () => {
-    console.log($(window).width(), body.width());
     if (body.width() <= 585) {
       $("nav ul").removeClass("nav-list").addClass("media-nav-list");
     } else {
@@ -54,7 +58,7 @@ $(() => {
       lastScrollTop = currentScrollTop;
       if (
         direction === "down" &&
-        lastScrollTop >= header.height() - 20 &&
+        lastScrollTop >= header.height() &&
         body.width() > 585
       ) {
         addFixed();

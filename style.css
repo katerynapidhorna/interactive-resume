@@ -232,6 +232,17 @@ nav li a:hover {
   width: 30px;
 }
 
+.social-github {
+  height: 32px;
+  background-image: url(./img/github-icon.png);
+  background-repeat: no-repeat;
+  display: block;
+  background-size: 70px;
+  background-position-x: -38px;
+  width: 32px;
+  background-position-y: -1px;
+}
+
 .experience-container {
   min-height: 100vh;
   background-color: rgb(89 197 182 / 81%);
@@ -319,7 +330,7 @@ nav li a:hover {
   margin: 4em auto;
   height: 450px;
   width: 450px;
-  background-image: url("./img/project-demo.png");
+  /* background-image: url("./img/project-demo.png"); */
   background-size: 100% 100%;
   background-repeat: no-repeat;
   transition: background-size 0.5s;
@@ -389,6 +400,7 @@ nav li a:hover {
   position: absolute;
   top: 120px;
   left: 20px;
+  right: 20px;
 }
 
 .project-overlay:hover span {
@@ -503,6 +515,10 @@ nav li a:hover {
     top: 12px;
     right: 30px;
     bottom: 15px;
+  }
+
+  .burger-menu:hover {
+    cursor: pointer;
   }
 
   .burger-menu span {
