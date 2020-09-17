@@ -5,7 +5,15 @@ $(() => {
   const body = $("body");
   const burgerMenu = $(".burger-menu");
   const mediaNavMenu = $(".media-nav-list");
+  const profileId = $("#profile");
+  const experienceId = $("#experience");
+  const skillsId = $("#stack");
+  const projectsId = $("#projects");
+  const contactId = $("#contact");
+  const linkToProfileId = $(".nav-list a");
   let lastScrollTop = 0;
+
+  console.log(profileId.offset().top, profileId.scrollTop());
 
   const addFixed = () => {
     const nav = $(".nav-list");
@@ -70,6 +78,40 @@ $(() => {
           addAbsolute();
         }
       }
+    }
+
+    if (
+      $w.scrollTop() >= profileId.offset().top &&
+      $w.scrollTop() < skillsId.offset().top
+    ) {
+      linkToProfileId.eq(0).addClass("active");
+      linkToProfileId.eq(1).removeClass("active");
+    } else if ($w.scrollTop() < profileId.offset().top) {
+      linkToProfileId.eq(0).removeClass("active");
+    } else if (
+      $w.scrollTop() >= skillsId.offset().top &&
+      $w.scrollTop() < experienceId.offset().top
+    ) {
+      linkToProfileId.eq(0).removeClass("active");
+      linkToProfileId.eq(1).addClass("active");
+      linkToProfileId.eq(2).removeClass("active");
+    } else if (
+      $w.scrollTop() >= experienceId.offset().top &&
+      $w.scrollTop() < projectsId.offset().top
+    ) {
+      linkToProfileId.eq(1).removeClass("active");
+      linkToProfileId.eq(2).addClass("active");
+      linkToProfileId.eq(3).removeClass("active");
+    } else if (
+      $w.scrollTop() >= projectsId.offset().top &&
+      $w.scrollTop() < contactId.offset().top
+    ) {
+      linkToProfileId.eq(2).removeClass("active");
+      linkToProfileId.eq(3).addClass("active");
+      linkToProfileId.eq(4).removeClass("active");
+    } else if ($w.scrollTop() >= contactId.offset().top) {
+      linkToProfileId.eq(3).removeClass("active");
+      linkToProfileId.eq(4).addClass("active");
     }
   });
   //changing position of the element on scroll_______END
