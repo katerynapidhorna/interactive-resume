@@ -1,10 +1,11 @@
 $(() => {
   const $w = $(window);
+  const menuUl = $("nav ul");
+  const anyMenuItem = $("nav ul li");
   const nav = $(".nav-list");
   const header = $("header");
   const body = $("body");
   const burgerMenu = $(".burger-menu");
-  const mediaNavMenu = $(".media-nav-list");
   const profileId = $("#profile");
   const experienceId = $("#experience");
   const skillsId = $("#stack");
@@ -13,8 +14,6 @@ $(() => {
   const linkToProfileId = $(".nav-list a");
   const menuItems = $(".nav-list li");
   let lastScrollTop = 0;
-
-  console.log(profileId.offset().top, profileId.scrollTop());
 
   const addFixed = () => {
     const nav = $(".nav-list");
@@ -33,10 +32,21 @@ $(() => {
   };
 
   burgerMenu.on("click", () => {
-    console.log("clicked");
+    menuUl.css({
+      display: "block",
+    });
+  });
+
+  anyMenuItem.on("click", () => {
+    menuUl.css({
+      display: "none",
+    });
   });
 
   const highlightMenuSection = () => {
+    if ($w.width() <= 585) {
+      return;
+    }
     if (
       $w.scrollTop() >= profileId.offset().top &&
       $w.scrollTop() < skillsId.offset().top
@@ -76,9 +86,13 @@ $(() => {
     if ($w.scrollTop() >= header.height() && body.width() > 585) {
       menuItems.eq(0).addClass("top-radius");
       menuItems.eq(4).addClass("bottom-radius");
+      linkToProfileId.eq(0).addClass("top-radius");
+      linkToProfileId.eq(4).addClass("bottom-radius");
     } else {
       menuItems.eq(0).removeClass("top-radius");
       menuItems.eq(4).removeClass("bottom-radius");
+      linkToProfileId.eq(0).removeClass("top-radius");
+      linkToProfileId.eq(4).removeClass("bottom-radius");
     }
   };
 
@@ -87,15 +101,15 @@ $(() => {
 
   //add/remove classes depending on screen width_______START
   if (body.width() <= 585) {
-    $("nav ul").removeClass("nav-list");
-    $("nav ul").addClass("media-nav-list");
+    menuUl.removeClass("nav-list").addClass("media-nav-list");
+    addAbsolute();
   }
 
   $w.on("resize", () => {
     if (body.width() <= 585) {
-      $("nav ul").removeClass("nav-list").addClass("media-nav-list");
+      menuUl.removeClass("nav-list").addClass("media-nav-list");
     } else {
-      $("nav ul").removeClass("media-nav-list").addClass("nav-list");
+      menuUl.removeClass("media-nav-list").addClass("nav-list");
     }
   });
   //add/remove classes depending on screen width_______END
@@ -108,7 +122,7 @@ $(() => {
 
   $w.on("scroll", () => {
     if (body.width() <= 585) {
-      $("nav ul").removeClass("nav-list").addClass("media-nav-list");
+      menuUl.removeClass("nav-list").addClass("media-nav-list");
       return;
     } else {
       const currentScrollTop = $w.scrollTop();
