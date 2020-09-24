@@ -16,7 +16,7 @@ $(() => {
   let lastScrollTop = 0;
 
   const addFixed = () => {
-    const nav = $(".nav-list");
+    console.log("class fixed added");
     nav.css({
       top: `110px`,
       position: "fixed",
@@ -24,30 +24,38 @@ $(() => {
     });
   };
   const addAbsolute = () => {
-    const nav = $(".nav-list");
-    nav.css({
-      top: "0",
-      position: "absolute",
-    });
+    console.log("class absolute added");
+    if (body.width() > 585) {
+      menuUl.css({
+        top: "0",
+        position: "absolute",
+      });
+    } else {
+      menuUl.css({
+        top: "2.8em",
+        position: "absolute",
+      });
+    }
   };
 
-  burgerMenu.on("click", () => {
-    menuUl.css({
-      display: "block",
-    });
-  });
-
-  anyMenuItem.on("click", () => {
-    menuUl.css({
-      display: "none",
-    });
-  });
+  const addBorderRadius = () => {
+    if ($w.scrollTop() >= header.height() && body.width() > 585) {
+      menuItems.eq(0).addClass("top-radius");
+      menuItems.eq(4).addClass("bottom-radius");
+      linkToProfileId.eq(0).addClass("top-radius");
+      linkToProfileId.eq(4).addClass("bottom-radius");
+    } else {
+      menuItems.eq(0).removeClass("top-radius");
+      menuItems.eq(4).removeClass("bottom-radius");
+      linkToProfileId.eq(0).removeClass("top-radius");
+      linkToProfileId.eq(4).removeClass("bottom-radius");
+    }
+  };
 
   const highlightMenuSection = () => {
     if ($w.width() <= 585) {
       return;
-    }
-    if (
+    } else if (
       $w.scrollTop() >= profileId.offset().top &&
       $w.scrollTop() < skillsId.offset().top
     ) {
@@ -81,48 +89,70 @@ $(() => {
       linkToProfileId.eq(4).addClass("active");
     }
   };
+  //if the window bigger then 585 and the page is reloaded call this funcs
+  highlightMenuSection();
+  addBorderRadius();
+  //if the window less then 585px
+  burgerMenu.on("click", () => {
+    menuUl.css({
+      display: "block",
+    });
+  });
 
-  const addBorderRadius = () => {
-    if ($w.scrollTop() >= header.height() && body.width() > 585) {
-      menuItems.eq(0).addClass("top-radius");
-      menuItems.eq(4).addClass("bottom-radius");
-      linkToProfileId.eq(0).addClass("top-radius");
-      linkToProfileId.eq(4).addClass("bottom-radius");
+  const changingMenuClassDependingOnWindowWidth = () => {
+    if (body.width() <= 585) {
+      menuUl.removeClass("nav-list").addClass("media-nav-list");
+      linkToProfileId.removeClass("active");
+      addAbsolute();
     } else {
-      menuItems.eq(0).removeClass("top-radius");
-      menuItems.eq(4).removeClass("bottom-radius");
-      linkToProfileId.eq(0).removeClass("top-radius");
-      linkToProfileId.eq(4).removeClass("bottom-radius");
+      menuUl.removeClass("media-nav-list").addClass("nav-list");
+      addFixed();
+    }
+
+    if (body.width() > 585 && $w.scrollTop() >= header.height()) {
+      highlightMenuSection();
+      addBorderRadius();
+    }
+    if (body.width() > 585) {
+      menuUl.css({
+        display: "block",
+      });
+    } else {
+      menuUl.css({
+        display: "none",
+      });
     }
   };
 
-  highlightMenuSection();
-  addBorderRadius();
+  anyMenuItem.on("click", () => {
+    if ($w.width() >= 585) {
+      return;
+    }
+    menuUl.css({
+      display: "none",
+    });
+  });
 
   //add/remove classes depending on screen width_______START
-  if (body.width() <= 585) {
-    menuUl.removeClass("nav-list").addClass("media-nav-list");
-    addAbsolute();
-  }
+  changingMenuClassDependingOnWindowWidth();
 
   $w.on("resize", () => {
-    if (body.width() <= 585) {
-      menuUl.removeClass("nav-list").addClass("media-nav-list");
-    } else {
-      menuUl.removeClass("media-nav-list").addClass("nav-list");
-    }
+    changingMenuClassDependingOnWindowWidth();
   });
   //add/remove classes depending on screen width_______END
 
   //changing position of the element on scroll_______START
   if ($w.scrollTop() >= header.height() && body.width() > 585) {
-    $("nav ul").removeClass("media-nav-list").addClass("nav-list");
+    menuUl.removeClass("media-nav-list").addClass("nav-list");
     addFixed();
+    highlightMenuSection();
+    addBorderRadius();
   }
 
   $w.on("scroll", () => {
     if (body.width() <= 585) {
       menuUl.removeClass("nav-list").addClass("media-nav-list");
+      addAbsolute();
       return;
     } else {
       const currentScrollTop = $w.scrollTop();
