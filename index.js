@@ -16,7 +16,6 @@ $(() => {
   let lastScrollTop = 0;
 
   const addFixed = () => {
-    console.log("class fixed added");
     nav.css({
       top: `110px`,
       position: "fixed",
@@ -24,7 +23,6 @@ $(() => {
     });
   };
   const addAbsolute = () => {
-    console.log("class absolute added");
     if (body.width() > 585) {
       menuUl.css({
         top: "0",
@@ -104,9 +102,12 @@ $(() => {
       menuUl.removeClass("nav-list").addClass("media-nav-list");
       linkToProfileId.removeClass("active");
       addAbsolute();
-    } else {
+    } else if (body.width() > 585 && $w.scrollTop() >= header.height()) {
       menuUl.removeClass("media-nav-list").addClass("nav-list");
       addFixed();
+    } else {
+      menuUl.removeClass("media-nav-list").addClass("nav-list");
+      addAbsolute();
     }
 
     if (body.width() > 585 && $w.scrollTop() >= header.height()) {
